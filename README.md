@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## DB設計
+基本的に`null: false`をつける
 
-Things you may want to cover:
+### users
+|column|type|options|
+|-|-|-|
+|name|str|-|
+|holiday|str|-|
+#### associations
+```ruby
+has_many combinations
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### combinations
+|column|type|options|
+|-|-|-|
+|first_user_id|int|-|
+|second_user_id|int|-|
+|third_user_id|int|null: true|
+#### associations
+```ruby
+belongs_to first_user,  class_name: 'User'
+belongs_to second_user, class_name: 'User'
+belongs_to third_user,  class_name: 'User'
+```

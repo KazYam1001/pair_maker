@@ -1,3 +1,26 @@
-<% @users.each do |user| %>
-  <p><%= user.name %></p>
-<% end %>
+<div class='wrapper'>
+  <section id='left'>
+    <%= form_with url: combinations_path, id: 'form' do |f| %>
+      <% @users.each do |user| %>
+        <div class='name-set'>
+          <p data-id='<%= user.id %>'><%= user.name %></p>
+          <p class='js-remove'>欠席</p>
+          <%= f.hidden_field :user_ids, name: 'user_ids[]', value: user.id %>
+        </div>
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+  </section>
+
+  <section id='center'>
+    <% @others.each do |other| %>
+      <div class='name-set'>
+        <p data-id="<%= other.id %>"><%= other.name %></p>
+        <p class='js-add'>出席</p>
+      </div>
+    <% end %>
+  </section>
+
+  <section id='result'>
+  </section>
+</div>

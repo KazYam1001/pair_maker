@@ -1,6 +1,6 @@
 <div class='wrapper'>
-  <section id='left'>
-    <%= form_with url: combinations_path, id: 'form' do |f| %>
+  <section id='left', class='members'>
+    <%= form_with url: combinations_path, id: 'form', class: 'members' do |f| %>
       <% @users.each do |user| %>
         <div class='name-set'>
           <p data-id='<%= user.id %>'><%= user.name %></p>
@@ -8,11 +8,11 @@
           <%= f.hidden_field :user_ids, name: 'user_ids[]', value: user.id %>
         </div>
       <% end %>
-      <%= f.submit %>
+      <%= f.submit 'ペア組み！' %>
     <% end %>
   </section>
 
-  <section id='center'>
+  <section id='center' class='members'>
     <% @others.each do |other| %>
       <div class='name-set'>
         <p data-id="<%= other.id %>"><%= other.name %></p>
@@ -22,5 +22,11 @@
   </section>
 
   <section id='result'>
+    <textarea rows="20" cols='40' id='textarea'></textarea>
+    <div>
+      <p>特別ゲスト</p>
+      <input type='text'>
+      <button class='js-add-guest'>追加</button>
+    </div>
   </section>
 </div>

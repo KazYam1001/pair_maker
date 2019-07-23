@@ -6,6 +6,7 @@ class CombinationsController < ApplicationController
 
   def create
     user_names = User.where(id: combination_params[:user_ids]).map(&:name)
+    user_names.concat(combination_params[:guest]) if combination_params[:guest]
     user_names.shuffle!
     @combinations = []
     (user_names.length / 2).floor.to_i.times do
@@ -17,7 +18,7 @@ class CombinationsController < ApplicationController
   private
 
   def combination_params
-    params.permit(user_ids: [])
+    params.permit(user_ids: [], guest: [])
   end
 
 end

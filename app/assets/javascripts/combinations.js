@@ -1,24 +1,29 @@
 $(document).on('turbolinks:load', function() {
 
-  const appendPairs = (ele) => {
+  const buildText = (ele) => {
     const last = ele[2] ? ` & ${ele[2]}` : '';
-    const html = document.createElement('p')
-    html.textContent = `${ele[0]} & ${ele[1]}${last}`
-    document.querySelector('#result').appendChild(html);
+    const text = `${ele[0]} & ${ele[1]}${last}\n`;
+    return text;
   }
 
   const addMember = (id, name)=> {
+    let input = ''
+    if (id) {
+      input = `<input name="user_ids[]" value="${id}" type="hidden"></input>`;
+    }else{
+      input = `<input name="guest[]" value="${name}" type="hidden"></input>`;
+    }
     const html = `<div class="name-set">
-                    <p>${name}</p>
+                    <p data-id='${id}'>${name}</p>
                     <p class="js-remove">欠席</p>
-                    <input name="user_ids[]" value="${id}" type="hidden" id="user_ids">
-                  </div>`
-    $('#form').append(html);
+                    ${input}
+                  </div>`;
+    $("input[type=submit]").before(html);
   }
 
   const removeMember = (id, name)=> {
     const html = `<div class="name-set">
-                    <p>${name}</p>
+                    <p data-id='${id}'>${name}</p>
                     <p class="js-add">出席</p>
                   </div>`
     $('#center').append(html);
@@ -26,9 +31,12 @@ $(document).on('turbolinks:load', function() {
   }
 
   document.addEventListener("ajax:success", (e) => {
+    $('#textarea').val('');
+    let text = '';
     e.detail[0].forEach(ele => {
-      appendPairs(ele)
+      text += buildText(ele);
     });
+    $('#textarea').val(text);
   });
 
   $('#center').on('click', '.js-add', function() {
@@ -38,9 +46,19 @@ $(document).on('turbolinks:load', function() {
     $(this).parent().remove();
   });
 
+  $('#result').on('click', '.js-add-guest', function() {
+    const name = $(this).prev().val();
+    addMember(null, name);
+    $(this).prev().val('');
+  });
+
   $('#form').on('click', '.js-remove', function() {
-    const name = $(this).prev().text()
     const id = $(this).prev().data('id')
+    if (id == null) {
+      $(this).parent().remove();
+      return;
+    }
+    const name = $(this).prev().text()
     removeMember(id, name);
     $(this).parent().remove();
   });

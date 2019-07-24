@@ -12,7 +12,9 @@ class CombinationsController < ApplicationController
     (user_names.length / 2).floor.to_i.times do
       user_names.length == 3 ? @combinations << user_names : @combinations << user_names.slice!(0,2)
     end
-    # binding.pry
+    respond_to do |format|
+      format.json
+    end
   end
 
   private

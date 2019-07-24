@@ -1,24 +1,13 @@
 <div class='wrapper'>
   <section id='left', class='members'>
     <%= form_with url: combinations_path, id: 'form', class: 'members' do |f| %>
-      <% @users.each do |user| %>
-        <div class='name-set'>
-          <p data-id='<%= user.id %>'><%= user.name %></p>
-          <p class='js-remove'>欠席</p>
-          <%= f.hidden_field :user_ids, name: 'user_ids[]', value: user.id %>
-        </div>
-      <% end %>
+      <%= render partial: 'users/user', collection: @users %>
       <%= f.submit 'ペア組み！' %>
     <% end %>
   </section>
 
   <section id='center' class='members'>
-    <% @others.each do |other| %>
-      <div class='name-set'>
-        <p data-id="<%= other.id %>"><%= other.name %></p>
-        <p class='js-add'>出席</p>
-      </div>
-    <% end %>
+    <%= render partial: 'users/other', collection: @others %>
   </section>
 
   <section id='result'>

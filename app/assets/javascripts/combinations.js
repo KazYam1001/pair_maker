@@ -30,13 +30,22 @@ $(document).on('turbolinks:load', function() {
 
   }
 
-  document.addEventListener("ajax:success", (e) => {
-    $('#textarea').val('');
-    let text = '';
-    e.detail[0].forEach(ele => {
-      text += buildText(ele);
-    });
-    $('#textarea').val(text);
+  $(document).on("ajax:success", (e) => {
+    console.log( e.detail[0].absence )
+
+    if (e.detail[0].absence == 'true') {
+      console.log('T')
+    }else if (e.detail[0].absence == 'false'){
+      console.log('F')
+    }else{
+      console.log('P')
+      $('#textarea').val('');
+      let text = '';
+      e.detail[0].forEach(ele => {
+        text += buildText(ele);
+      });
+      $('#textarea').val(text);
+    }
   });
 
   $('#center').on('click', '.js-add', function() {

@@ -1,14 +1,21 @@
 <div class='wrapper'>
-  <section id='left', class='members'>
-    <%= form_with url: combinations_path, id: 'form', class: 'members' do |f| %>
-      <%= render partial: 'users/user', collection: @users %>
-      <%= f.submit 'ペア組み！' %>
-    <% end %>
-  </section>
 
-  <section id='center' class='members'>
-    <%= render partial: 'users/other', collection: @others %>
-  </section>
+  <div class='edit-members'>
+
+    <section id='left', class='members'>
+      <%= render partial: 'users/user', collection: @users %>
+    </section>
+
+    <section id='center' class='members'>
+      <%= render partial: 'users/other', collection: @others %>
+    </section>
+    <%= form_with url: combinations_path, id: 'new_combination' do |c| %>
+      <% @users.each do |user| %>
+        <%= c.hidden_field :user_ids, name: 'user_ids[]', value: user.id, data: { for_combination: user.id } %>
+      <% end %>
+      <%= c.submit 'ペア組み！', class: 'js-submit-pair' %>
+    <% end %>
+  </div>
 
   <section id='result'>
     <textarea rows="20" cols='40' id='textarea'></textarea>

@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
   const addMember = (id, name, token)=> {
     const html = `<div class="p-member-name">
                     <p data-id="${id}">${name}</p>
-                    <form class="button_to" method="post" action="/users/${id}?entry%3F=0" data-remote="true"><input type="hidden" name="_method" value="patch"><input class="js-remove c-btn c-btn--entry" type="submit" value="欠席"><input type="hidden" name="authenticity_token" value="${token}"></form>
+                    <form class="button_to" method="post" action="/users/${id}?entry%3F=0" data-remote="true"><input type="hidden" name="_method" value="patch"><input class="js-remove c-btn c-btn--dark" type="submit" value="欠席"><input type="hidden" name="authenticity_token" value="${token}"></form>
                   </div>`;
     $('#left').append(html);
   }
@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', function() {
   const addGuest = (name)=> {
     const html = `<div class="p-member-name">
                     <p>${name}</p>
-                    <button class='js-remove-guest c-btn c-btn--entry'>欠席</button>
+                    <button class='js-remove-guest c-btn c-btn--dark'>欠席</button>
                   </div>`;
     $('#left').append(html);
   }
@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function() {
   const removeMember = (id, name, token)=> {
     const html = `<div class="p-member-name">
                     <p data-id="${id}">${name}</p>
-                    <form class="button_to" method="post" action="/users/${id}?entry%3F=1" data-remote="true"><input type="hidden" name="_method" value="patch"><input class="js-add c-btn c-btn--absence" type="submit" value="出席"><input type="hidden" name="authenticity_token" value="${token}"></form>
+                    <form class="button_to" method="post" action="/users/${id}?entry%3F=1" data-remote="true"><input type="hidden" name="_method" value="patch"><input class="js-add c-btn c-btn--light" type="submit" value="出席"><input type="hidden" name="authenticity_token" value="${token}"></form>
                   </div>`
     $('#center').append(html);
 

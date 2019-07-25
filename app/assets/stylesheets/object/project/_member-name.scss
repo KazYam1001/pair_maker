@@ -1,15 +1,13 @@
 .p-member-name {
   display: flex;
-  width: 25%;
   justify-content: space-around;
   p {
-    flex-grow: 1;
+    font-size: 1.5rem;
   }
   form {
     height: 100%;
-    .c-btn {
-      width: 46px;
-      height: 28px;
-    }
+  }
+  .c-btn {
+    height: 28px;
   }
 }

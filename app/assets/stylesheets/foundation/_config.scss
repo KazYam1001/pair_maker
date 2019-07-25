@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'りい手書き筆';
+  src: font-url('rii_t_f.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+$font: 'りい手書き筆','Oswald', "Noto Sans JP", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", sans-serif;
+
+$mainBrown: #BF5B04;
+$subBrown: #F2C299;
+$mainRed: #8C1C03;
+$darkRed: #590902;
+$wineRed: #260101;
+$darkGrey: #2F353C;
+$textColor: $darkGrey;

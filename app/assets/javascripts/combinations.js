@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   const addMember = (id, name, token)=> {
-    const html = `<div class="name-set">
+    const html = `<div class="p-member-name">
                     <p data-id="${id}">${name}</p>
                     <form class="button_to" method="post" action="/users/${id}?entry%3F=0" data-remote="true"><input type="hidden" name="_method" value="patch"><input class="js-remove" type="submit" value="欠席"><input type="hidden" name="authenticity_token" value="${token}"></form>
                   </div>`;
@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   const addGuest = (name)=> {
-    const html = `<div class="name-set">
+    const html = `<div class="p-member-name">
                     <p>${name}</p>
                     <button class='js-remove-guest'>欠席</button>
                   </div>`;
@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   const removeMember = (id, name, token)=> {
-    const html = `<div class="name-set">
+    const html = `<div class="p-member-name">
                     <p data-id="${id}">${name}</p>
                     <form class="button_to" method="post" action="/users/${id}?entry%3F=1" data-remote="true"><input type="hidden" name="_method" value="patch"><input class="js-add" type="submit" value="出席"><input type="hidden" name="authenticity_token" value="${token}"></form>
                   </div>`
@@ -65,7 +65,6 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('#left').on('click', '.js-remove-guest', function() {
-    console.log(1)
     const name = $(this).prev().text();
     $(`input[data-for-combination=${name}]`).remove();
     $(this).parent().remove();

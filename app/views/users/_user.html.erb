@@ -1,4 +1,4 @@
-<div class='name-set'>
+<div class='p-member-name'>
   <p data-id='<%= user.id %>'><%= user.name %></p>
   <%= button_to '欠席', user_path(id: user.id, entry?: 0),class: 'js-remove btn', method: :patch, remote: true %>
 </div>

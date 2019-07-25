@@ -13,7 +13,7 @@ CSV.foreach('db/csv/holidays.csv', headers: true) do |row|
 end
 
 CSV.foreach('db/csv/users_holidays.csv', headers: true) do |row|
-  UsersHoliday.create(
+  UsersHoliday.create!(
     user_id: row['user_id'],
     holiday_id: row['holiday_id']
   )

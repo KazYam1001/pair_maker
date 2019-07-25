@@ -1,4 +1,10 @@
 @import 'foundation/config';
 @import 'foundation/reset';
 @import 'foundation/base';
-@import 'base/style';
+@import 'layout/content';
+@import 'layout/header';
+@import 'layout/result';
+@import 'object/compornent/button';
+@import 'object/project/combi-btn';
+@import 'object/project/member-name';
+@import 'object/project/members';

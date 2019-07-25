@@ -1,8 +1,9 @@
 .p-members {
-  display: flex;
-  flex-flow: column wrap;
   width: 50%;
   height: 80%;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 5px 10px;
 }
 
 .p-members--entry {

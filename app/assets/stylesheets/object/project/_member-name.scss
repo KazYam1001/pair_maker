@@ -2,4 +2,14 @@
   display: flex;
   width: 25%;
   justify-content: space-around;
+  p {
+    flex-grow: 1;
+  }
+  form {
+    height: 100%;
+    .c-btn {
+      width: 46px;
+      height: 28px;
+    }
+  }
 }

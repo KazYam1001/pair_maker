@@ -1,1 +1,1 @@
-json.absence @user.absence?.to_s
+json.user_id @user.id

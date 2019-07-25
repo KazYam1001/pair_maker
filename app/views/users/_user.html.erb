@@ -1,6 +1,4 @@
 <div class='name-set'>
   <p data-id='<%= user.id %>'><%= user.name %></p>
-  <p class='js-remove'>欠席</p>
-  <%= link_to  '欠席', user_path(id: user.id, absence?: 1), method: :patch, remote: true %>
-  <%= hidden_field_tag :user_ids, user.id, name: 'user_ids[]' %>
+  <%= button_to '欠席', user_path(id: user.id, entry?: 0),class: 'js-remove btn', method: :patch, remote: true %>
 </div>

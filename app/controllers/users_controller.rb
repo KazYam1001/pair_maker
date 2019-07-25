@@ -7,6 +7,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:absence?)
+    params.permit(:entry?)
   end
 end

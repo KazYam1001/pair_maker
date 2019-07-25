@@ -1,25 +1,21 @@
 <div class='wrapper'>
-  <section id='left', class='members'>
-    <%= form_with url: combinations_path, id: 'form', class: 'members' do |f| %>
-      <% @users.each do |user| %>
-        <div class='name-set'>
-          <p data-id='<%= user.id %>'><%= user.name %></p>
-          <p class='js-remove'>欠席</p>
-          <%= f.hidden_field :user_ids, name: 'user_ids[]', value: user.id %>
-        </div>
-      <% end %>
-      <%= f.submit 'ペア組み！' %>
-    <% end %>
-  </section>
 
-  <section id='center' class='members'>
-    <% @others.each do |other| %>
-      <div class='name-set'>
-        <p data-id="<%= other.id %>"><%= other.name %></p>
-        <p class='js-add'>出席</p>
-      </div>
+  <div class='edit-members'>
+
+    <section id='left', class='members'>
+      <%= render partial: 'users/user', collection: @users %>
+    </section>
+
+    <section id='center' class='members'>
+      <%= render partial: 'users/other', collection: @others %>
+    </section>
+    <%= form_with url: combinations_path, id: 'new_combination' do |c| %>
+      <% @users.each do |user| %>
+        <%= c.hidden_field :user_ids, name: 'user_ids[]', value: user.id, data: { for_combination: user.id } %>
+      <% end %>
+      <%= c.submit 'ペア組み！', class: 'js-submit-pair' %>
     <% end %>
-  </section>
+  </div>
 
   <section id='result'>
     <textarea rows="20" cols='40' id='textarea'></textarea>

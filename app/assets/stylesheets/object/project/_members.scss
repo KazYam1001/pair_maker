@@ -1,0 +1,15 @@
+.p-members {
+  display: flex;
+  flex-flow: column wrap;
+  width: 50%;
+  height: 80%;
+}
+
+.p-members--entry {
+  background-color: $bg-white;
+}
+
+.p-members--absence {
+  background-color: $bg-black;
+  color: $lightGrey;
+}

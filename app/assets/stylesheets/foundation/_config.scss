@@ -7,15 +7,18 @@
 $font: 'りい手書き筆','Oswald', "Noto Sans JP", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", sans-serif;
 
 $bg-brown: rgba(191, 91, 4, 0.9);
-$bg-lightBrown: rgba(242, 194, 153, 0.8);
+$bg-lightBrown08: rgba(242, 194, 153, 0.8);
+$bg-lightBrown04: rgba(242, 194, 153, 0.4);
 $bg-wineRed: rgba(89, 9, 2, 0.9);
 $bg-white: rgba(255, 255, 255, 0.8);
 $bg-black: rgba(0, 0, 0, 0.8);
 
-$mainBrown: #BF5B04;
+$brown: #BF5B04;
+$lightBrown: #F2C299;
 $mainRed: #8C1C03;
 $wineRed: #590902;
 $darkRed: #260101;
 $darkGrey: #2F353C;
-$lightGrey: rgb(231, 231, 231);
+$grey: #aaaaaa;
+$lightGrey: #eeeeee;
 $textColor: $darkGrey;

@@ -13,7 +13,7 @@
       <% @users.each do |user| %>
         <%= c.hidden_field :user_ids, name: 'user_ids[]', value: user.id, data: { for_combination: user.id } %>
       <% end %>
-      <%= c.submit 'ペア組み！', class: 'js-submit-pair' %>
+      <%= c.submit 'ペア組み！', class: 'c-combi-btn js-submit-pair' %>
     <% end %>
   </div>
 

@@ -69,5 +69,9 @@ $(document).on('turbolinks:load', function() {
     $(`input[data-for-combination=${name}]`).remove();
     $(this).parent().remove();
   });
+
+  $('#textarea').on('click', function(){
+    this.select();
+  })
 })
 

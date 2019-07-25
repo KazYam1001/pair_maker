@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  .c-textarea {
+    flex-grow: 1;
+    margin-bottom: 20%;
+  }
   .p-guest-form {
     margin-bottom: 20px;
   }

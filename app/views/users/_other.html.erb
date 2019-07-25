@@ -1,4 +1,4 @@
 <div class='p-member-name'>
   <p data-id="<%= other.id %>"><%= other.name %></p>
-  <%= button_to '出席', user_path(id: other.id, entry?: 1), class:'js-add', method: :patch, remote: true %>
+  <%= button_to '出席', user_path(id: other.id, entry?: 1), class:'js-add c-btn c-btn--absence', method: :patch, remote: true %>
 </div>

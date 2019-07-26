@@ -42,8 +42,8 @@ $(document).on('turbolinks:load', function() {
   });
 
   $('#left').on('ajax:success', '.button_to', function() {
-    const id = $(this).prev().data('id')
-    const name = $(this).prev().text()
+    const id = $(this).prev().data('id');
+    const name = $(this).prev().text();
     removeMember(id, name, token);
     $(`input[data-for-combination=${id}]`).remove();
     $(this).parent().remove();
@@ -59,6 +59,10 @@ $(document).on('turbolinks:load', function() {
 
   $('#result').on('click', '.js-add-guest', function() {
     const name = $(this).prev().val();
+    if (!name.trim()) {
+      alert('ゲストの名前を入力して下さい');
+      return;
+    }
     addGuest(name);
     $('.js-submit-pair').before(`<input name="guest[]" value="${name}" data-for-combination="${name}" type="hidden">`);
     $(this).prev().val('');
@@ -73,5 +77,5 @@ $(document).on('turbolinks:load', function() {
   $('#textarea').on('click', function(){
     this.select();
   })
-})
+});
 

@@ -1,17 +1,33 @@
-.p-members {
-  width: 48%;
-  height: 77%;
+.p-members__label {
+  width: 140px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  margin-left: 30px;
+  border-radius: 10px 10px 0 0 / 10px 10px 0 0;
+  text-align: center;
+  color: $labelText;;
+  &--entry {
+    background-color: $bg-white;
+  }
+  &--absence {
+    background-color: $bg-black;
+  }
+}
+
+.p-members__board {
+  height: calc(100% - 35px);
+  width: 100%;
   display: flex;
   flex-flow: column wrap;
   border-radius: 10px;
-  padding: 5px 10px;
 }
 
-.p-members--entry {
-  background-color: $bg-white;
+.p-members__board--entry {
+  background: linear-gradient(135deg, rgba(255,255,255,0.8) 30%, rgba(204,204,204,0.8) 60%, rgba(170,170,170,0.8) 68%, rgba(0,0,0,0.8) 100%);
 }
 
-.p-members--absence {
-  background-color: $bg-black;
+.p-members__board--absence {
+  background: linear-gradient(135deg, rgba(0,0,0,0.8) 30%, rgba(68,68,68,0.8) 60%, rgba(153,153,153,0.8) 92%, rgba(255,255,255,0.8) 100%);
   color: $lightGrey;
 }

@@ -2,13 +2,20 @@
   <header class='l-header'>昼会へるぱー</header>
   <div class='l-content'>
 
-    <section id='left' class='p-members p-members--entry'>
-      <%= render partial: 'users/user', collection: @users %>
-    </section>
+    <div class='l-members p-members'>
+      <label class='p-members__label p-members__label--entry'>参加者</label>
+      <section id='left' class='p-members__board p-members__board--entry'>
+        <%= render partial: 'users/user', collection: @users %>
+      </section>
+    </div>
 
-    <section id='center' class='p-members p-members--absence'>
-      <%= render partial: 'users/other', collection: @others %>
-    </section>
+    <div class='l-members p-members'>
+      <label class='p-members__label p-members__label--absence'>お休み</label>
+      <section id='center' class='p-members__board p-members__board--absence'>
+        <%= render partial: 'users/other', collection: @others %>
+      </section>
+    </div>
+
     <%= form_with url: combinations_path, id: 'new_combination', class: 'p-combi-btn' do |c| %>
       <% @users.each do |user| %>
         <%= c.hidden_field :user_ids, name: 'user_ids[]', value: user.id, data: { for_combination: user.id } %>

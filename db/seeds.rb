@@ -3,7 +3,7 @@ require "csv"
 CSV.foreach('db/csv/users.csv', headers: true) do |row|
   User.where(name: row['name']).first_or_create do |user|
     user.id = row['id']
-    user.job = row['job']
+    user.job = row['job'].to_i
   end
 end
 

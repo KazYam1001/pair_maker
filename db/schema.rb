@@ -10,30 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_114142) do
+ActiveRecord::Schema.define(version: 2019_07_22_114103) do
 
   create_table "holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.integer "wday", default: 0, null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_holidays_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.integer "job", default: 0, null: false
     t.boolean "entry?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users_holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "holiday_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["holiday_id"], name: "index_users_holidays_on_holiday_id"
-    t.index ["user_id"], name: "index_users_holidays_on_user_id"
-  end
-
-  add_foreign_key "users_holidays", "holidays"
-  add_foreign_key "users_holidays", "users"
+  add_foreign_key "holidays", "users"
 end

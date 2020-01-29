@@ -1,10 +1,11 @@
 require "csv"
 
 CSV.foreach('db/csv/users.csv', headers: true) do |row|
-  User.where(name: row['name']).first_or_create do |user|
-    user.id = row['id']
-    user.job = row['job'].to_i
-  end
+  user = User.find_or_initialize_by(id: row['id'])
+  user.update_attributes(
+    name: row['name'],
+    job: row['job'].to_i
+  )
 end
 
 Holiday.destroy_all

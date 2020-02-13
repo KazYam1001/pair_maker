@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :holidays
 
-  enum job: { holiday: 0, tc_sales: 1, life_coach: 2, mentor: 3, carrier: 4, exp_sales: 5 }
+  enum job: { holiday: 0, tc_sales: 1, life_coach: 2, mentor: 3, carrier: 4, exp_sales: 5, all_day: 6 }
 
   def self.working(wday)
 

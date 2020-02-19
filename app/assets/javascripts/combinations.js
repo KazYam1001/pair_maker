@@ -1,8 +1,17 @@
 $(document).on('turbolinks:load', function() {
 
-  const buildText = (ele) => {
-    const last = ele[2] ? ` & ${ele[2]}` : '';
-    const text = `${ele[0]} & ${ele[1]}${last}\n`;
+  const paddingright = (val,char,n) => {
+    for(; val.length < n; val+=char);
+    return val;
+  }
+
+  const buildText = (group, pairs) => {
+    let text = `【${group}】\n`
+    pairs.forEach(ele => {
+      const last = ele[2] ? ` & ${ele[2]}` : '';
+      const col = `${ele[0]} & ${ele[1]}${last}`;
+      text += paddingright(col, ' ', 15) + '\n'
+    })
     return text;
   }
 
@@ -34,10 +43,17 @@ $(document).on('turbolinks:load', function() {
 
   $('#new_combination').on("ajax:success", (e) => {
     $('#textarea').val('');
-    let text = '';
-    e.detail[0].forEach(ele => {
-      text += buildText(ele);
-    });
+    let text = 'A　B\nC　D\nE　F\n\n';
+    const groups = e.detail[0]
+    for(let key of Object.keys(groups)) {
+      console.log(key)
+      console.log(groups[key]);
+      text += buildText(key, groups[key])
+    }
+    // e.detail[0].forEach(ele => {
+    //   console.log(ele)
+    //   text += buildText(ele);
+    // });
     $('#textarea').val(text);
   });
 

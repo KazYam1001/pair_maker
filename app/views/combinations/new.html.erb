@@ -18,7 +18,7 @@
 
     <%= form_with url: combinations_path, id: 'new_combination', class: 'p-combi-btn' do |c| %>
       <% @users.each do |user| %>
-        <%= c.hidden_field :user_ids, name: 'user_ids[]', value: user.id, data: { for_combination: user.id } %>
+        <%= c.hidden_field :user_ids, name: 'user_ids[]', value: user.id, data: { for_combination: user.id }, id: nil %>
       <% end %>
       <%= c.submit 'ペア組み！', class: 'c-combi-btn js-submit-pair' %>
     <% end %>

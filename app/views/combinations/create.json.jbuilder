@@ -1,1 +1,1 @@
-json.array! @combinations
+json.merge! @groups

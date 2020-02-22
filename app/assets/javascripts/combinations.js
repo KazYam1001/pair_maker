@@ -1,18 +1,36 @@
 $(document).on('turbolinks:load', function() {
 
-  const paddingright = (val,char,n) => {
+  const paddingRight = (val,char,n) => {
     for(; val.length < n; val+=char);
     return val;
   }
 
-  const buildText = (group, pairs) => {
-    let text = `【${group}】\n`
+  const buildGroup = (group, pairs) => {
+    let text = [ paddingRight(`【${group}】`, ' ', 30) + '\n' ]
     pairs.forEach(ele => {
       const last = ele[2] ? ` & ${ele[2]}` : '';
       const col = `${ele[0]} & ${ele[1]}${last}`;
-      text += paddingright(col, ' ', 15) + '\n'
+      text.push(paddingRight(col, ' ', 25) + '\n')
     })
     return text;
+  }
+
+  const buildText = (groups) => {
+    let left = []
+    let right = []
+    let text = ''
+    for(let key of Object.keys(groups)) {
+      if (key === 'A' || key === 'C' || key === 'E') {
+        left = buildGroup(key, groups[key])
+        left = left.map(ele =>{ return ele.replace(/\r?\n/g, '') })
+      } else {
+        right = buildGroup(key, groups[key])
+        for(let i = 0; i < left.length; i++) {
+          text += right ? left[i] + right[i] : left[i];
+        }
+      }
+    }
+    return text
   }
 
   const addMember = (id, name, token)=> {
@@ -43,17 +61,9 @@ $(document).on('turbolinks:load', function() {
 
   $('#new_combination').on("ajax:success", (e) => {
     $('#textarea').val('');
-    let text = 'A　B\nC　D\nE　F\n\n';
+    let text = '';
     const groups = e.detail[0]
-    for(let key of Object.keys(groups)) {
-      console.log(key)
-      console.log(groups[key]);
-      text += buildText(key, groups[key])
-    }
-    // e.detail[0].forEach(ele => {
-    //   console.log(ele)
-    //   text += buildText(ele);
-    // });
+    text += buildText(groups)
     $('#textarea').val(text);
   });
 

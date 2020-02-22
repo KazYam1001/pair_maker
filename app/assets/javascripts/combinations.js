@@ -26,7 +26,9 @@ $(document).on('turbolinks:load', function() {
       } else {
         right = buildGroup(key, groups[key])
         for(let i = 0; i < left.length; i++) {
-          text += right ? left[i] + right[i] : left[i];
+          // 右にペアがあれば連結してtextに追加
+          // 無ければ左のペアに改行を足してtextに追加
+          text += right[i] ? left[i] + right[i] : left[i] + '\n'
         }
       }
     }
